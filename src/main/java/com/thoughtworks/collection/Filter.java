@@ -2,6 +2,8 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -14,18 +16,49 @@ public class Filter {
     }
 
     public List<Integer> filterEven() {
-        throw new NotImplementedException();
+        if (array == null) {
+            return null;
+        }
+        ArrayList<Integer> resultList = new ArrayList<>();
+        for (int i = 0; i < array.size(); i++) {
+            if (array.get(i) % 2 == 0) {
+                resultList.add(array.get(i));
+            }
+        }
+        return resultList;
     }
 
     public List<Integer> filterMultipleOfThree() {
-        throw new NotImplementedException();
+        if (array == null) {
+            return null;
+        }
+        ArrayList<Integer> resultList = new ArrayList<>();
+        for (int i = 0; i < array.size(); i++) {
+            if (array.get(i) % 3 == 0) {
+                resultList.add(array.get(i));
+            }
+        }
+        return resultList;
     }
 
     public List<Integer> getCommonElements(List<Integer> firstList, List<Integer> secondList) {
-        throw new NotImplementedException();
+        if (firstList == null || secondList == null) {
+            return null;
+        }
+        ArrayList<Integer> resultList = new ArrayList<>(firstList);
+        ArrayList<Integer> secondArrayList = new ArrayList<>(secondList);
+        resultList.retainAll(secondArrayList);
+        return resultList;
     }
 
     public List<Integer> getDifferentElements() {
-        throw new NotImplementedException();
+        if (array == null) {
+            return null;
+        }
+        LinkedHashSet<Integer> linkedHashSet = new LinkedHashSet<>();
+        linkedHashSet.addAll(array);
+        ArrayList<Integer> result = new ArrayList<>();
+        result.addAll(linkedHashSet);
+        return result;
     }
 }
